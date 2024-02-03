@@ -25,6 +25,7 @@ MSRC =
 MAIN = $(MSRC)/main.c
 OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
+BMAIN = $(BSRC)/main.c
 BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
