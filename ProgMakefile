@@ -21,7 +21,7 @@ MAIN_PATH = $(SRC_PATH)/main
 BSRC_PATH = $(SRC_PATH)/bonus
 TST_PATH = $(SRC_PATH)/test
 LI_INC_PATH = ~/include
-LI_LIB_PATH = ~/lib
+LI_BIN_PATH = ~/bin
 
 # Source and object files
 HDRS = 
@@ -84,8 +84,8 @@ $(OBJ_PATH)/%.o: %.c
 linstall:
 	@mkdir -p $(LI_INC_PATH)
 	@cp $(HDRS) $(LI_INC_PATH)
-	@mkdir -p $(LI_LIB_PATH)
-	@cp $(BIN_PATH)/$(NAME) $(LI_LIB_PATH)
+	@mkdir -p $(LI_BIN_PATH)
+	@cp $(BIN_PATH)/$(NAME) $(LI_BIN_PATH)
 
 mkdir:
 	@mkdir -p $(BIN_PATH)
