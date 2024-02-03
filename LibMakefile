@@ -28,20 +28,17 @@ LI_LIB_PATH = ~/lib
 # Source and object files
 HDRS = 
 MSRC =
-OBJ = $(MSRC:%=$(OBJ_PATH)%.o)
+OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
 BSRC =
-BOBJ = $(BSRC:%=$(OBJ_PATH)%.o)
+BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
 TSRC =
-TOBJ = $(TSRC:%=$(OBJ_PATH)%.o)
-
-# Unwanted files to be deleted
-UNW = .DS_Store ./*/.DS_Store
+TOBJ = $(TSRC:%.c=$(OBJ_PATH)%.o)
 
 # Config
+# Unwanted files to be deleted
+UNW = .DS_Store ./*/.DS_Store
 # No. of seconds the screen output will be visible for
 SECONDS_VISIBLE = 4
-
-# Custom
 # BONUS = 0 if you're going to do bonus: BONUS := 1
 
 # Colors
@@ -79,10 +76,12 @@ test: $(NAME) $(TOBJ)
 	@echo "$(YELLOW)Linking objects.$(DEF_COLOR)\n"
 	@$(CC) $(CFLAGS) $(TOBJ) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
 	@echo "$(GREEN)$(TNAME) compiled successfully.$(DEF_COLOR)\n"
+	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
 
-$(OBJ_PATH)/%.o: %
-	$(CC) $(COBJFLAGS) $^ -o $@
+$(OBJ_PATH)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(COBJFLAGS) $^ -o $@
 
 linstall:
 	@mkdir -p $(LI_INC_PATH)

@@ -1,14 +1,12 @@
 # Makefle template for 42 projects
 
 # Tools
-NAME = libprogram.a
-LIBNAME = program
+NAME = program
 TNAME = test
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -I $(INC_PATH) $(DBGFLAGS)
 COBJFLAGS = $(CFLAGS) -c
 DBGFLAGS =
-ARFLAGS = -crs
 RMFLAGS = -r
 
 # Paths
@@ -28,20 +26,17 @@ LI_LIB_PATH = ~/lib
 # Source and object files
 HDRS = 
 MSRC =
-OBJ = $(MSRC:%=$(OBJ_PATH)%.o)
+OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
 BSRC =
-BOBJ = $(BSRC:%=$(OBJ_PATH)%.o)
+BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
 TSRC =
-TOBJ = $(TSRC:%=$(OBJ_PATH)%.o)
-
-# Unwanted files to be deleted
-UNW = .DS_Store ./*/.DS_Store
+TOBJ = $(TSRC:%.c=$(OBJ_PATH)%.o)
 
 # Config
+# Unwanted files to be deleted
+UNW = .DS_Store ./*/.DS_Store
 # No. of seconds the screen output will be visible for
 SECONDS_VISIBLE = 4
-
-# Custom
 # BONUS = 0 if you're going to do bonus: BONUS := 1
 
 # Colors
@@ -60,9 +55,9 @@ all: $(NAME)
 $(NAME): mkdir $(OBJ)
 	@echo "\n$(GREEN)$(NAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@make -C $(LFT_PATH)
-	@cp $(LFT_PATH)/libft.a $(BIN_PATH)/$(NAME)
-	@echo "\n$(YELLOW)Creating archive file.$(DEF_COLOR)\n"
-	@$(AR) $(BIN_PATH)/$(NAME) $(OBJ)
+	@cp $(LFT_PATH)/libft.a $(BIN_PATH)/libft
+	@echo "\n$(YELLOW)Linking $(NAME) objects.$(DEF_COLOR)\n"
+	@$(CC) $(CFLAGS) $(OBJ) -L$(BIN_PATH) -lft -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled successfully.$(DEF_COLOR)\n"
 
 debug: DBGFLAGS := -g
@@ -79,10 +74,12 @@ test: $(NAME) $(TOBJ)
 	@echo "$(YELLOW)Linking objects.$(DEF_COLOR)\n"
 	@$(CC) $(CFLAGS) $(TOBJ) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
 	@echo "$(GREEN)$(TNAME) compiled successfully.$(DEF_COLOR)\n"
+	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
 
-$(OBJ_PATH)/%.o: %
-	$(CC) $(COBJFLAGS) $^ -o $@
+$(OBJ_PATH)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(COBJFLAGS) $^ -o $@
 
 linstall:
 	@mkdir -p $(LI_INC_PATH)
