@@ -117,6 +117,11 @@ The templates already come with a few custom macros:
 * SECONDS_VISIBLE: the amount of time, in seconds, to wait before clearing the console in the ctry and cbtry rules. Use those when you just wanna see if your project compiles and passes the norm.
 * BONUS: this one's optional. Use it and set it to 0 if you'll not be having separate `.._bonus.c` files and instead you'll use this variable to tell the program it's in bonus mode.
 
+#
+**Colors**
+The templates come with multiple terminal colors to **bring** your **M**ak**e**file **to life**.
+Usage examples: `@echo "$(RED)Everyhing after that will be red.$(GREEN)And now everything will be green.$(DEF_COLOR)And now back to the terminal's default color.\n"`
+
 ### Rules
 Many of the template's rules are custom and require some explaining:
 * all: runs $(NAME).
