@@ -22,6 +22,7 @@ BSRC_PATH = $(SRC_PATH)/bonus
 # Source and object files
 HDRS = 
 MSRC =
+MAIN = $(MSRC)/main.c
 OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
 BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
