@@ -27,10 +27,10 @@ MSRC =
 MAIN = $(MSRC)/main.c
 OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
-MAIN = $(BSRC)/main.c
+BMAIN = $(BSRC)/main.c
 BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 TSRC =
-MAIN = $(TSRC)/main.c
+TMAIN = $(TSRC)/main.c
 TOBJ = $(TSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
