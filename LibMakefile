@@ -26,7 +26,6 @@ TST_PATH = $(SRC_PATH)/test
 # Source and object files
 HDRS = 
 MSRC =
-MAIN = $(MSRC)/main.c
 OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
 BSRC =
 MAIN = $(BSRC)/main.c
@@ -55,7 +54,7 @@ WHITE = \033[0;97m
 
 all: $(NAME)
 
-$(NAME): mkdir $(OBJ) $(MAIN)
+$(NAME): mkdir $(OBJ)
 	@echo "\n$(GREEN)$(NAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@make -C $(LFT_PATH)
 	@cp $(LFT_PATH)/libft.a $(BIN_PATH)/$(NAME)
@@ -79,6 +78,8 @@ test: $(NAME) $(TOBJ) $(TMAIN)
 	@echo "$(GREEN)$(TNAME) compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
+
+$(TNAME): test
 
 $(OBJ_PATH)/%.o: %.c
 	@mkdir -p $(@D)
