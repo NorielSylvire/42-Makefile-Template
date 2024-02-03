@@ -26,12 +26,12 @@ TST_PATH = $(SRC_PATH)/test
 # Source and object files
 HDRS = 
 MSRC =
-OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
+OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
-BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
+BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 TSRC =
 TMAIN = $(TSRC)/main.c
-TOBJ = $(TSRC:%.c=$(OBJ_PATH)%.o)
+TOBJ = $(TSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
 # Unwanted files to be deleted
@@ -73,7 +73,7 @@ bonus: $(NAME)
 test: $(NAME) $(TOBJ) $(TMAIN)
 	@echo "\n$(GREEN)$(TNAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(YELLOW)Linking objects.$(DEF_COLOR)\n"
-	@$(CC) $(CFLAGS) $(TOBJ) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
+	@$(CC) $(CFLAGS) $(TOBJ) $(TMAIN:%.c=$(OBJ_PATH)/%.o) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
 	@echo "$(GREEN)$(TNAME) compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
