@@ -26,11 +26,14 @@ LI_BIN_PATH = ~/bin
 # Source and object files
 HDRS = 
 MSRC =
-OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
+MAIN = $(MSRC)/main.c
+OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
-BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
+BMAIN = $(BSRC)/main.c
+BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 TSRC =
-TOBJ = $(TSRC:%.c=$(OBJ_PATH)%.o)
+TMAIN = $(TSRC)/main.c
+TOBJ = $(TSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
 # Unwanted files to be deleted
@@ -52,12 +55,12 @@ WHITE = \033[0;97m
 
 all: $(NAME)
 
-$(NAME): mkdir $(OBJ)
+$(NAME): mkdir $(OBJ) $(MAIN)
 	@echo "\n$(GREEN)$(NAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@make -C $(LFT_PATH)
 	@cp $(LFT_PATH)/libft.a $(BIN_PATH)/libft
 	@echo "\n$(YELLOW)Linking $(NAME) objects.$(DEF_COLOR)\n"
-	@$(CC) $(CFLAGS) $(OBJ) -L$(BIN_PATH) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(MAIN:%.c=$(OBJ_PATH)/%.o) -L$(BIN_PATH) -lft -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled successfully.$(DEF_COLOR)\n"
 
 debug: DBGFLAGS := -g
@@ -69,10 +72,10 @@ debug: $(NAME)
 bonus: $(NAME)
 # Or compile here if you'll use separate bonus and mandatory files.
 
-test: $(NAME) $(TOBJ)
+test: $(NAME) $(TOBJ) $(TMAIN)
 	@echo "\n$(GREEN)$(TNAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(YELLOW)Linking objects.$(DEF_COLOR)\n"
-	@$(CC) $(CFLAGS) $(TOBJ) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
+	@$(CC) $(CFLAGS) $(TOBJ) $(TMAIN:%.c=$(OBJ_PATH)/%.o) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
 	@echo "$(GREEN)$(TNAME) compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
