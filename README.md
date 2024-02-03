@@ -42,6 +42,7 @@ Macros are separated into five different categories:
 
 #
 **Tools**
+
 These macros are used to define which tools to use, and their flags. For example you can change the compiler to your preferred one.
 Here's what each one does:
 * NAME: this must be the same as the name in your subject. Example: libft.a
@@ -56,6 +57,7 @@ Here's what each one does:
 
 #
 **Paths**
+
 These macros are used to configure your project structure.
 You can follow this structure or configure the Makefile to follow your own structure.
 
@@ -99,6 +101,7 @@ But I guess this is the next best thing after doing a proper install.
 
 #
 **Source and object files**
+
 This is where you name each and every source file in your project.
 Here's what each macro does:
 * HDRS: list your header files here. Useful when doing a local install to put the latest version of your in your custom include path.
@@ -111,6 +114,7 @@ Here's what each macro does:
 
 #
 **Config**
+
 Configure your custom macros here.
 The templates already come with a few custom macros:
 * UNW: these are all the unwanted/garbage files that you'll want to delete often. Example: .DS_Store ./*/.DS_Store (this will remove every single one of those pesky .DS_Store files you often get when using 42's Macs. To use this run `make xclean` because it's Xtra clean!
