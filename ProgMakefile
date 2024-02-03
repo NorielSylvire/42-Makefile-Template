@@ -78,6 +78,8 @@ test: $(NAME) $(TOBJ) $(TMAIN)
 	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
 
+$(TNAME): test
+
 $(OBJ_PATH)/%.o: %.c
 	@mkdir -p $(@D)
 	@$(CC) $(COBJFLAGS) $^ -o $@
