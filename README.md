@@ -27,7 +27,7 @@ If using the library template, also rename LIBNAME to be the same as the NAME bu
 #
 These makefiles are configured to use a very specific project structure.
 For example the src path is the path where all the source code files will be located.
-See [Macros](https://github.com/NorielSylvire/42-Makefile-Template/tree/develop?tab=readme-ov-file#usage) for more info.
+See [Macros](https://github.com/NorielSylvire/42-Makefile-Template/tree/develop?tab=readme-ov-file#macros) for more info.
 
 Make sure to change all the paths to your liking before using, and make sure your actual project structure and your path macros match!
 For instance consider leaving the target path as just `.` and the binary path as just `$(TGT_PATH)/`, just like it is in the main branch.
