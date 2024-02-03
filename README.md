@@ -108,10 +108,13 @@ This is where you name each and every source file in your project.
 Here's what each macro does:
 * HDRS: list your header files here. Useful when doing a local install to put the latest version of your in your custom include path.
 * MSRC: your main project source files. These are all the `.c` files in your **mandatory** version of the project.
+* MAIN: this is your mandatory main file. You can only have one main per program, so you won't compile this when running tests.
 * OBJ: the main source objects to be compiled
 * BSRC: your bonus source files. These will be all the `..._bonus.c` files from the **bonus** version of the project.
+* BMAIN: same as above, only this will be your bonus main.
 * BOBJ: the bonus objects to be compiled.
 * TSRC: you may want to make your project using TDD, in which case you will want to define the test `.c` files separately and compile them separately. These files could contain unit tests of your project, for instance.
+* TMAIN: same as above, only this will be your test main.
 * TOBJ: the test objects to be compiled.
 
 #
@@ -142,6 +145,10 @@ Many of the template's rules are custom and require some explaining:
 * btry: recompiles the bonus, then cleans up, then runs norminette.
 * ctry: runs try, then clear after SECONDS_VISIBLE seconds.
 * cbtry: runs btry, then clear after SECONDS_VISIBLE seconds.
+
+# FAQ
+## Why did you add a main, test main and bonus main macro instead of just including them to their respective src macros?
+Because a program can only have one main function, and when you compile your tests, you'll want to execute that program. You won't be able to do any of that if the compiler detects two main functions. So you compile the objects separately and add only the main you want.
 
 #
 And that's it!
