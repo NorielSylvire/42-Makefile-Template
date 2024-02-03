@@ -10,8 +10,8 @@ DBGFLAGS =
 RMFLAGS = -r
 
 # Paths
-TGT_PATH = target
-BIN_PATH = $(TGT_PATH)/bin
+TGT_PATH = .
+BIN_PATH = $(TGT_PATH)/
 OBJ_PATH = $(TGT_PATH)/obj
 DBG_PATH = debug
 SRC_PATH = src
@@ -20,8 +20,6 @@ LFT_PATH = $(SRC_PATH)/libft
 MAIN_PATH = $(SRC_PATH)/main
 BSRC_PATH = $(SRC_PATH)/bonus
 TST_PATH = $(SRC_PATH)/test
-LI_INC_PATH = ~/include
-LI_BIN_PATH = ~/bin
 
 # Source and object files
 HDRS = 
@@ -80,12 +78,6 @@ test: $(NAME) $(TOBJ)
 $(OBJ_PATH)/%.o: %.c
 	@mkdir -p $(@D)
 	@$(CC) $(COBJFLAGS) $^ -o $@
-
-linstall:
-	@mkdir -p $(LI_INC_PATH)
-	@cp $(HDRS) $(LI_INC_PATH)
-	@mkdir -p $(LI_BIN_PATH)
-	@cp $(BIN_PATH)/$(NAME) $(LI_BIN_PATH)
 
 mkdir:
 	@mkdir -p $(BIN_PATH)

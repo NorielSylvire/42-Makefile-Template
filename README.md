@@ -1,16 +1,18 @@
-# Develop Templates
+# Main with tests Templates
 
-Templates in the develop branch are used when you have already finished, validated and passed a project and you want to continue developing the project as opposed to templates in the main branch, which are used when you still haven't finished the project.
+Templates in the main-with-tests branch are used when you have just begun a 42 project and want to use TDD, as opposed to templates in the develop branch, which are used when you've already finished a project and wanna continue developing it.
 
-Templates in the main branch have quite a few less features, because you won't need them when turning a project in. This way you avoid running into problems caused by the extra stuff in the makefile.
+Templates in the main-with-tests branch have quite a few less features, because you won't need them when turning a project in. This way you avoid running into problems caused by the extra stuff in the makefile.
+Bear in mind however, that this branch has tests! So make sure to remove them and everything test-related from the Makefile before turning the project in.
 
 ## Features
 There are a number of features available in this branch that the main branch just lacks so as to not provoke the wrath of moulinette or cause unexpected issues.
 
-Features in develop that main doesn't have:
-* Test rules: useful for developing your own unit tests and running them.
+Features in develop that main-with-tests doesn't have:
 * Debug rule: it generates the debug files. Useful for debugging with lldb or any other tool.
 * Local install rules: it installs the library into a user defined directory. Usage explained below.
+
+Please remember to remove everything test-related before turning in the project.
 
 ## Variations
 There are two variations of the template.
