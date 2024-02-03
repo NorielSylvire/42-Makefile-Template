@@ -49,7 +49,6 @@ These macros are used to define which tools to use, and their flags. For example
 Here's what each one does:
 * NAME: this must be the same as the name in your subject. Example: libft.a
 * LIBNAME: for compiling and using libraries, it must be the same as the NAME but without the lib at the beginning and without the `.a` at the end. Example: `ft`
-* TNAME: this is the name of the test executable that will run your own custom tests. Example: test
 * CC: choose your C Compiler. Examples: gcc, cc, clang
 * CFLAGS: your default flags for the compiler. Put here every flag you'll want to use all the time. Example: -Wall -Wextra -Werror because these are mandatory by the subject.
 * COBJFLAGS: these will be all the CFLAGS plus some extra that you decide you want for your objects. Example: $(CFLAGS) -c -fstanitize=address
@@ -73,7 +72,6 @@ Src paths:
 * Include path: used for .h or any other header files. Put your bonus and test headers here too!
 * Main source path: use this directory for the mandatory project's `.c` files.
 * Bonus path: used for bonus `.c` files, if you have them.
-* Test path: develop your test `.c` files, if any, here.
 * Libft path: obviously this is the path to libft. Remove this if your project doesn't use  libft.
 
 #
@@ -113,9 +111,6 @@ Here's what each macro does:
 * BSRC: your bonus source files. These will be all the `..._bonus.c` files from the **bonus** version of the project.
 * BMAIN: same as above, only this will be your bonus main.
 * BOBJ: the bonus objects to be compiled.
-* TSRC: you may want to make your project using TDD, in which case you will want to define the test `.c` files separately and compile them separately. These files could contain unit tests of your project, for instance.
-* TMAIN: same as above, only this will be your test main.
-* TOBJ: the test objects to be compiled.
 
 #
 **Config**
@@ -132,7 +127,6 @@ Many of the template's rules are custom and require some explaining:
 * $(NAME): compiles your program/library.
 * debug: sets the DBGFLAGS to -g so that the compiler generates the files needed to use lldb/gdb properly.
 * bonus: this could go one of two ways. You could **either** set the BONUS macro to 1 and then just run $(NAME) with an added -D$(BONUS) when you don't want separate bonus and mandatory files, **or** you can actually compile the separate BSRC files here. Choose one or the other.
-* test: compiles and executes your unit tests, if any. Just remove this if you won't make your own tests.
 * $(OBJ_PATH)/%.o: compiles the % object, where % is the name of a source file minus the `.c` at the end. If needed, makes a new directory for the object to be in.
 * linstall: performs a local install of your program/library, to use it as a standard library or as a command.
 * mkdir: makes all the necessary temporary directories.
@@ -147,8 +141,8 @@ Many of the template's rules are custom and require some explaining:
 * cbtry: runs btry, then clear after SECONDS_VISIBLE seconds.
 
 ## FAQ
-### Why did you add a main, test main and bonus main macro instead of just including them to their respective src macros?
-Because a program can only have one main function, and when you compile your tests, you'll want to execute that program. You won't be able to do any of that if the compiler detects two main functions. So you compile the objects separately and add only the main you want.
+### Why did you add a main and bonus main macro instead of just including them to their respective src macros?
+Because a program can only have one main function, and when you compile your bonus, you'll want to execute that program. You won't be able to do any of that if the compiler detects two main functions. So you compile the objects separately and add only the main you want.
 
 #
 And that's it!
