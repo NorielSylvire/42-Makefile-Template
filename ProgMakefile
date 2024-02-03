@@ -16,16 +16,16 @@ DBG_PATH = debug
 SRC_PATH = src
 INC_PATH = $(SRC_PATH)/include
 LFT_PATH = $(SRC_PATH)/libft
-MAIN_PATH = $(SRC_PATH)/main
+MSRC_PATH = $(SRC_PATH)/main
 BSRC_PATH = $(SRC_PATH)/bonus
 
 # Source and object files
 HDRS = 
 MSRC =
-MAIN = $(MSRC)/main.c
+MAIN = $(MSRC_PATH)/main.c
 OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
-BMAIN = $(BSRC)/main.c
+BMAIN = $(BSRC_PATH)/main.c
 BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
