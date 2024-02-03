@@ -146,8 +146,8 @@ Many of the template's rules are custom and require some explaining:
 * ctry: runs try, then clear after SECONDS_VISIBLE seconds.
 * cbtry: runs btry, then clear after SECONDS_VISIBLE seconds.
 
-# FAQ
-## Why did you add a main, test main and bonus main macro instead of just including them to their respective src macros?
+## FAQ
+### Why did you add a main, test main and bonus main macro instead of just including them to their respective src macros?
 Because a program can only have one main function, and when you compile your tests, you'll want to execute that program. You won't be able to do any of that if the compiler detects two main functions. So you compile the objects separately and add only the main you want.
 
 #
