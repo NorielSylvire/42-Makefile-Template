@@ -25,13 +25,13 @@ TST_PATH = $(SRC_PATH)/test
 HDRS = 
 MSRC =
 MAIN = $(MSRC)/main.c
-OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
+OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
 MAIN = $(BSRC)/main.c
-BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
+BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 TSRC =
 MAIN = $(TSRC)/main.c
-TOBJ = $(TSRC:%.c=$(OBJ_PATH)%.o)
+TOBJ = $(TSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
 # Unwanted files to be deleted
@@ -58,7 +58,7 @@ $(NAME): mkdir $(OBJ) $(MAIN)
 	@make -C $(LFT_PATH)
 	@cp $(LFT_PATH)/libft.a $(BIN_PATH)/libft
 	@echo "\n$(YELLOW)Linking $(NAME) objects.$(DEF_COLOR)\n"
-	@$(CC) $(CFLAGS) $(OBJ) -L$(BIN_PATH) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(MAIN:%.c=$(OBJ_PATH)/%.o) -L$(BIN_PATH) -lft -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled successfully.$(DEF_COLOR)\n"
 
 debug: DBGFLAGS := -g
@@ -73,7 +73,7 @@ bonus: $(NAME)
 test: $(NAME) $(TOBJ) $(TMAIN)
 	@echo "\n$(GREEN)$(TNAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(YELLOW)Linking objects.$(DEF_COLOR)\n"
-	@$(CC) $(CFLAGS) $(TOBJ) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
+	@$(CC) $(CFLAGS) $(TOBJ) $(TMAIN:%.c=$(OBJ_PATH)/%.o) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
 	@echo "$(GREEN)$(TNAME) compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(MAGENTA)Running tests.$(DEF_COLOR)\n"
 	@./$(BIN_PATH)/$(TNAME)
