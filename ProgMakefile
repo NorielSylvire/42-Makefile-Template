@@ -22,9 +22,9 @@ BSRC_PATH = $(SRC_PATH)/bonus
 # Source and object files
 HDRS = 
 MSRC =
-OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
+OBJ = $(MSRC:%.c=$(OBJ_PATH)/%.o)
 BSRC =
-BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
+BOBJ = $(BSRC:%.c=$(OBJ_PATH)/%.o)
 
 # Config
 # Unwanted files to be deleted
