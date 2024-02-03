@@ -26,10 +26,13 @@ TST_PATH = $(SRC_PATH)/test
 # Source and object files
 HDRS = 
 MSRC =
+MAIN = $(MSRC)/main.c
 OBJ = $(MSRC:%.c=$(OBJ_PATH)%.o)
 BSRC =
+MAIN = $(BSRC)/main.c
 BOBJ = $(BSRC:%.c=$(OBJ_PATH)%.o)
 TSRC =
+MAIN = $(TSRC)/main.c
 TOBJ = $(TSRC:%.c=$(OBJ_PATH)%.o)
 
 # Config
@@ -52,7 +55,7 @@ WHITE = \033[0;97m
 
 all: $(NAME)
 
-$(NAME): mkdir $(OBJ)
+$(NAME): mkdir $(OBJ) $(MAIN)
 	@echo "\n$(GREEN)$(NAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@make -C $(LFT_PATH)
 	@cp $(LFT_PATH)/libft.a $(BIN_PATH)/$(NAME)
@@ -69,7 +72,7 @@ debug: $(NAME)
 bonus: $(NAME)
 # Or compile here if you'll use separate bonus and mandatory files.
 
-test: $(NAME) $(TOBJ)
+test: $(NAME) $(TOBJ) $(TMAIN)
 	@echo "\n$(GREEN)$(TNAME) objects compiled successfully.$(DEF_COLOR)\n"
 	@echo "$(YELLOW)Linking objects.$(DEF_COLOR)\n"
 	@$(CC) $(CFLAGS) $(TOBJ) -L$(BIN_PATH) -l$(LIBNAME) -o $(TNAME)
