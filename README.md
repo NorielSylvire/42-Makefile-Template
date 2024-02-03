@@ -26,7 +26,7 @@ If using the library template, also rename LIBNAME to be the same as the NAME bu
 
 These makefiles are configured to use a very specific project structure.
 
-### 
+#
 
 The src path is the path where all the source code files will be located.
 Inside it there are other paths defined, such as:
@@ -36,7 +36,7 @@ Inside it there are other paths defined, such as:
 * Test path: develop your test .c files, if any, here.
 * Libft path: obviously this is the path to libft. Remove this if your project doesn't use  libft.
 
-### 
+#
 
 The target path is where everything you compile will go.
 If you want to clean everything in the project, just delete everything  in the target path or delete the target directory entirely!
@@ -45,7 +45,7 @@ Inside it there's two more paths:
 * Binary path: this is the path where all executables and archives will go.
 * Object path: all compiled objects go here.
 
-### 
+#
 
 The local install (LI) paths are used for installing a copy of your library to a user-defined path.
 This is useful for when you have already finished a project, like libft or printf, so that whenever you wanna use that library you don't need to copy the entire libft/printf project into your current project.
@@ -61,13 +61,13 @@ If you could do this you woulnd't need to configure the compiler to use these cu
 
 But I guess this is the next best thing after doing a proper install.
 
-### 
+#
 
 You can of course configure every single one of these paths to your liking.
 For instance consider leaving the target path as just `.` and the binary path as just `$(TGT_PATH)/`, just like it is in the main branch.
 
 This way your program/library will be compiled in the main project directory, like intended by the subject, and your objects will be compiled in `./obj` which is also a nice path.
 
-## Usage
+## Rules and Macros
 
 TO-DO: explain every rule and macro, and how to use them.
